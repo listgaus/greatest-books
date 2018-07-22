@@ -98,21 +98,7 @@ export class BooksListComponent implements OnInit {
     }
   }
 
-  private validateBookTitle(titleToValidate, bookId): boolean {
-    if (this.validateOnlyEnglishLetters(titleToValidate)) {
-      for (let i = 0; i < this.books.length; i++) {
-        if (this.books[i].volumeInfo.title.toLowerCase() === titleToValidate.toLowerCase() &&
-          this.books[i].id !== bookId) {
-          this.isTitleDuplicate = true;
-          return false;
-        }
-      }
-      return true;
-    }
-    return false;
-  }
-
-  private validateTitle(titleToValidate, bookId) {
+  validateTitle(titleToValidate, bookId) {
     this.isTitleDuplicate = false;
     if (this.validateOnlyEnglishLetters(titleToValidate)) {
       this.books.map(book => {
@@ -168,15 +154,10 @@ export class BooksListComponent implements OnInit {
 
 
   addNewBookItem() {
+    this.books.push(JSON.parse(JSON.stringify(this.newBook)));
     this.initValidations();
-    if (this.validateBookTitle(this.newBook.volumeInfo.title, this.newBook.id) &&
-      this.validateBookAuthors(this.newBook.volumeInfo.authors) &&
-      this.validateDate(this.newBook.volumeInfo.publishedDate)
-    ) {
-      this.books.push(JSON.parse(JSON.stringify(this.newBook)));
-      this.initNewBook();
-      this.modalRef.hide();
-    }
+    this.initNewBook();
+    this.modalRef.hide();
   }
 
 
