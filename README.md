@@ -1,28 +1,14 @@
-# GreatestBooks
+# Greatest books
+Greatest books is a live library of books fetched from Google Books API
+Sorted into different components implementing ngx-bootstrap features such as buttons, carousel, modal and more.
+All book lists besided the top 10s list are editable, deletable and avialable for adding your owne data.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.8.
+This project was generated with Angular CLI version 6.0.8,
 
-## Development server
+## Deployment
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+After several failed tryouts to deploy my project to github pages using angular-cli-ghpages [https://github.com/angular-schule/angular-cli-ghpages] which is not fully supporting yet Angular 6, ive decided to deploy my project to heroko using Node express server.
 
-## Code scaffolding
+## My deployed project can be found here:
+ https://greatest-books.herokuapp.com/ 
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
-# greatest_books
