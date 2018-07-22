@@ -1,0 +1,165 @@
+<div class="books-list row">
+  <div class="nav-bar">
+    <ul class="nav">
+      <li class="search-bar-container fas fa-search">
+        <search-bar [(value)]="searchBookText" (valueChange)="filterBooks()"></search-bar>
+      </li>
+      <div class="row pull-right">
+        <li (click)="loadData('martial arts')">
+          <button class="btn btn-outline-primary">Martial arts</button>
+        </li>
+        <li (click)="loadData('Cooking')">
+          <button class="btn btn-outline-info">Cooking</button>
+        </li>
+        <li (click)="loadData('Programming')">
+          <button class="btn btn-outline-danger">Programming</button>
+        </li>
+        <li (click)="loadData('Traveling')">
+          <button class="btn btn-outline-secondary">Traveling</button>
+        </li>
+        <li (click)="loadData('Pets')">
+          <button class="btn btn-outline-dark">Pets</button>
+        </li>
+        <li (click)="loadData('DIY')">
+          <button class="btn btn-outline-warning">DIY</button>
+        </li>
+        <li class="btn btn-outline-success right-btn" (click)="openModal(add)"><i class="fas fa-plus-circle">Add
+          Book</i>
+        </li>
+      </div>
+    </ul>
+  </div>
+
+  <hr>
+
+  <img *ngIf="isLoading" class="loading pull-right" src="/assets/images/ajax-loader.gif" alt="Loading data...">
+
+  <div class="single-book col-sm-5" *ngFor="let book of books ">
+    <book *ngIf="!isLoading" [book]="book" (edit)="openModal(editbook);updateCurrentBook($event)"></book>
+  </div>
+</div>
+
+
+<ng-template #editbook>
+  <div class="edit-popup">
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">Edit</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="container">
+        <form #editBook="ngForm">
+          <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text" class="form-control" id="title" name="title"
+                   [(ngModel)]="currentBook.volumeInfo.title" minlength="4" required
+                   #title="ngModel" minlength="4"
+                   (keydown)="validateTitle(currentBook.volumeInfo.title,currentBook.id)">
+            <div *ngIf="isTitleDuplicate" class="alert alert-danger">This title already exists, try another name</div>
+            <div [hidden]="title.valid || title.untouched"
+                 class="alert alert-danger">
+              Title must be at least 3 characters
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="authors">Authors</label>
+            <input type="text" class="form-control" id="authors" name="authors" #authors="ngModel"
+                   [(ngModel)]="currentBook.volumeInfo.authors">
+          </div>
+
+          <div class="form-group">
+            <label for="date">Publish Date</label>
+            <input type="date" class="form-control" id="date" name="date" required
+                   (keydown)="validateDate(currentBook.volumeInfo.publishedDate)"
+                   (keypress)="validateDate(currentBook.volumeInfo.publishedDate)"
+                   #date="ngModel" [(ngModel)]="currentBook.volumeInfo.publishedDate">
+            <div *ngIf="!isDateValid" class="alert alert-danger">This date is invalid</div>
+          </div>
+
+
+        </form>
+
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="submit" class="btn btn-primary save-button" [disabled]="!isDateValid" (click)="updateBookItem()">
+        Save
+      </button>
+      <button type="button" class="btn btn-danger pull-left delete-button" (click)="modalRef.hide();openModal(delete)">
+        Delete
+      </button>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #delete>
+  <div class="modal-body text-center">
+    <p>Do you want to delete "{{currentBook.volumeInfo.title}}?</p>
+    <button type="button" class="btn btn-default" (click)="modalRef.hide();deleteBook(currentBook);">Yes</button>
+    <button type="button" class="btn btn-primary" (click)="modalRef.hide()">No</button>
+  </div>
+</ng-template>
+
+<ng-template #add>
+  <div class="edit-popup">
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">Add A New Book</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="container">
+        <form #addBook="ngForm">
+
+          <div class="form-group">
+            <label for="newTitle">Title</label>
+            <input type="text" class="form-control" id="newTitle" name="newTitle" minlength="4" required
+                   #newTitle="ngModel"
+                   minlength="5" [(ngModel)]="newBook.volumeInfo.title"
+                   (keydown)="validateTitle(newBook.volumeInfo.title,newBook.id)">
+            <div *ngIf="isTitleDuplicate" class="alert alert-danger">This title already exists, try another name</div>
+            <div [hidden]="newTitle.valid || newTitle.untouched"
+                 class="alert alert-danger">
+              Title must be at least 4 characters
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="newAuthors">Authors</label>
+            <input type="text" class="form-control" id="newAuthors" name="newAuthors" #newAuthors="ngModel" required
+                   minlength="4" [(ngModel)]="newBook.volumeInfo.authors">
+            <div [hidden]="newAuthors.valid || newAuthors.untouched"
+                 class="alert alert-danger">
+              Must Add authors
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="newDate">Publish Date</label>
+            <input type="date" class="form-control" id="newDate" name="newDate" required
+                   (keydown)="validateDate(newBook.volumeInfo.publishedDate,newBook.id)"
+                   #newDate="ngModel" [(ngModel)]="newBook.volumeInfo.publishedDate">
+            <div *ngIf="!isDateValid" class="alert alert-danger">This date is invalid</div>
+          </div>
+
+          <div class="form-group">
+            <label for="link">Image link</label>
+            <input class="form-control" type="text" pattern="https?://.+" id="link" name="link"
+                   [(ngModel)]="newBook.volumeInfo.imageLinks.thumbnail">
+          </div>
+
+        </form>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="submit" class="btn btn-primary save-button" [disabled]="addBook.invalid"
+              (submit)="addNewBookItem();modalRef.hide();">Add
+      </button>
+      <button type="button" class="btn btn-danger pull-left delete-button" (click)="modalRef.hide()">Cancel</button>
+    </div>
+  </div>
+</ng-template>

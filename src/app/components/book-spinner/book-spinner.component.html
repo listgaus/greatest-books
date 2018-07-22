@@ -1,0 +1,3 @@
+<drag-scroll class="book-spinner">
+  <book-spinner-item *ngFor="let book of books" [book]="book" (delete)="deleteBook($event)" drag-scroll-item ></book-spinner-item>
+</drag-scroll>

@@ -1,0 +1,13 @@
+<div class="best-book-list">
+    <div *ngFor="let book of books">
+        <div class="best-book-continer">
+            <div class="book-image-container">
+                <img [src]="book.volumeInfo.imageLinks.thumbnail" >
+            </div>
+            <div class="book-text-container">
+                <p class="book-title">{{book.volumeInfo.title | booktitle }}</p>
+                <p class="book-authors"> by {{book.volumeInfo.authors}}</p>
+            </div>
+        </div>
+    </div>
+</div>

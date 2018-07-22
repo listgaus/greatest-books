@@ -1,0 +1,21 @@
+<div>
+  <site-header></site-header>
+</div>
+<div class="book-spinner-container">
+  <book-spinner></book-spinner>
+</div>
+<div>
+  <div class="best-book-list-container">
+    <div class="best-book-list" *ngIf="booksOfTheWeek">
+        <p class="best-books-header">Books Of The Week</p>
+      <best-book-list [books]="booksOfTheWeek"></best-book-list>
+    </div>
+    <div class="best-book-list" *ngIf="booksOfTheYear">
+        <p class="best-books-header">Books Of The Year</p>
+      <best-book-list [books]="booksOfTheYear"></best-book-list>
+    </div>
+  </div>
+  <div>
+    <books-list></books-list>
+  </div>
+</div>

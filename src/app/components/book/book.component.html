@@ -1,0 +1,22 @@
+<div class="single-book-container" *ngIf="book?.volumeInfo?.imageLinks?.thumbnail">
+  <div class="book-body">
+    <div class="book-image">
+      <img class="card-img-top" *ngIf="book.volumeInfo.imageLinks.thumbnail.length>5"
+           [src]="book.volumeInfo.imageLinks.thumbnail"
+           alt="Card image cap">
+      <img class="card-img-top" *ngIf="!book.volumeInfo.imageLinks.thumbnail || book.volumeInfo.imageLinks.thumbnail == ' '"
+           src="../../../assets/images/nocover.jpg"
+           alt="Card image cap">
+    </div>
+    <div class="book-info">
+      <p class="title">{{book.volumeInfo.title | booktitle | titlecase }}</p>
+      <p class="authors"> By: {{book.volumeInfo.authors}}.</p>
+      <p class="authors">Published: {{book.volumeInfo.publishedDate | date:'MM/dd/yyyy'}}</p>
+      <p class="description">{{book.volumeInfo.description| truncate}}</p>
+    </div>
+    <div class="edit-button">
+      <i (click)="openEditPopup($event)" class="fas fa-ellipsis-v btn"></i>
+    </div>
+  </div>
+</div>
+
