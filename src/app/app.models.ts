@@ -6,8 +6,7 @@ kind?: string,
   volumeInfo?: {
   title?: string,
     subtitle?: any,
-    authors?: [
-    string
+    authors?: any[
   ],
     publisher?: string,
     publishedDate?: any,

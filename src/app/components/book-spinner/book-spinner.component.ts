@@ -27,12 +27,4 @@ export class BookSpinnerComponent implements OnInit {
     );
   }
 
-  deleteBook(bookToDelete:M.GoogleBook){
-    for(let i=0;i<=this.books.length;i++){
-      if(this.books[i].id===bookToDelete.id){
-        this.books.splice(i,1);
-      }
-    }
-  }
-
 }

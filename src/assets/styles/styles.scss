@@ -3,7 +3,7 @@ body {
   color: gray;
 }
 
-.background{
+.background {
   background: url("../images/header.jpg") no-repeat center center fixed;
   background-size: cover;
 }
@@ -24,7 +24,7 @@ body {
     margin-top: 4px;
     margin-right: 10px;
   }
-  .search-input{
+  .search-input {
     margin-left: 5px;
     margin-top: 2px;
   }
@@ -271,7 +271,7 @@ book-list {
 }
 
 .edit-popup {
-  .save-button{
+  .save-button {
     margin-right: 10px;
   }
   .close {
@@ -289,4 +289,7 @@ book-list {
   }
 }
 
-
+.required {
+  color: red;
+  margin-left: 2px;
+}

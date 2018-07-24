@@ -15,13 +15,14 @@ export class BookSpinnerItemComponent implements OnInit {
   newAuthors: any;
   newDate: any;
   modalRef: BsModalRef;
+  isDateValid: boolean = true;
 
   constructor(private modalService: BsModalService) {}
 
   ngOnInit() {
-    this.newTitle = this.book.volumeInfo.title;
-    this.newDate = this.book.volumeInfo.publishedDate;
-    this.newAuthors = this.book.volumeInfo.authors;
+    this.newTitle = JSON.parse(JSON.stringify(this.book.volumeInfo.title));
+    this.newDate = JSON.parse(JSON.stringify(this.book.volumeInfo.publishedDate));
+    this.newAuthors = JSON.parse(JSON.stringify(this.book.volumeInfo.authors[0]));
   }
 
   openModal(template: TemplateRef<any>) {
@@ -34,9 +35,15 @@ export class BookSpinnerItemComponent implements OnInit {
     this.book.volumeInfo.authors = this.newAuthors;
   }
 
-  deleteBook(){
-    this.delete.emit(this.book);
-    this.modalRef.hide();
+  validateDate(BookDate) {
+    let thisDate = new Date();
+    let bookDate = new Date(BookDate);
+    if (bookDate > thisDate) {
+      this.isDateValid = false;
+      return false;
+    }
+    this.isDateValid = true;
+    return true;
   }
 
 }

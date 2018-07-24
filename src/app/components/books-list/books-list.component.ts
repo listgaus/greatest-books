@@ -22,7 +22,6 @@ export class BooksListComponent implements OnInit {
   isTitleDuplicate: boolean;
   isLettersValid: boolean;
   isAuthorsValid: boolean;
-  isStringLenghtValid: boolean;
 
   constructor(private booksService: BooksService,
               private modalService: BsModalService) {
@@ -41,8 +40,9 @@ export class BooksListComponent implements OnInit {
     this.newBook.volumeInfo.title = ' ';
     this.newBook.volumeInfo.publishedDate = '1970-01-01';
     this.newBook.volumeInfo.authors = [' '];
-    this.newBook.volumeInfo.imageLinks = {};
-    this.newBook.volumeInfo.imageLinks.thumbnail = ' ';
+    this.newBook.volumeInfo.imageLinks = {   smallThumbnail: 'http://',
+      thumbnail: 'https://'};
+
   }
 
   updateCurrentBook(editableBook: M.GoogleBook) {
@@ -53,7 +53,6 @@ export class BooksListComponent implements OnInit {
     this.isDateValid = true;
     this.isLettersValid = true;
     this.isAuthorsValid = true;
-    this.isStringLenghtValid = true;
     this.isTitleDuplicate = false;
   }
 
@@ -91,11 +90,7 @@ export class BooksListComponent implements OnInit {
   }
 
   deleteBook(bookToDelete: M.GoogleBook) {
-    for (let i = 0; i <= this.books.length; i++) {
-      if (this.books[i].id === bookToDelete.id) {
-        this.books.splice(i, 1);
-      }
-    }
+    this.books.splice(this.books.findIndex(book => book.id === bookToDelete.id),1);
   }
 
   validateTitle(titleToValidate, bookId) {
@@ -128,7 +123,7 @@ export class BooksListComponent implements OnInit {
     return false;
   }
 
-  private validateDate(BookDate) {
+  validateDate(BookDate) {
     let thisDate = new Date();
     let bookDate = new Date(BookDate);
     if (bookDate > thisDate) {
@@ -140,7 +135,6 @@ export class BooksListComponent implements OnInit {
   }
 
   updateBookItem() {
-    this.initValidations();
     if (this.validateBookAuthors(this.currentBook.volumeInfo.authors)) {
       for (let i = 0; i <= this.books.length; i++) {
         if (this.books[i].id === this.currentBook.id) {
@@ -149,6 +143,7 @@ export class BooksListComponent implements OnInit {
         }
       }
     }
+    this.initValidations();
     this.modalRef.hide();
   }
 

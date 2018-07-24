@@ -56,7 +56,8 @@
             <input type="text" class="form-control" id="title" name="title"
                    [(ngModel)]="currentBook.volumeInfo.title" minlength="4" required
                    #title="ngModel" minlength="4"
-                   (keydown)="validateTitle(currentBook.volumeInfo.title,currentBook.id)">
+                   (keydown)="validateTitle(currentBook.volumeInfo.title,currentBook.id)"
+                   (change)="validateTitle(currentBook.volumeInfo.title,currentBook.id)">
             <div *ngIf="isTitleDuplicate" class="alert alert-danger">This title already exists, try another name</div>
             <div [hidden]="title.valid || title.untouched"
                  class="alert alert-danger">
@@ -66,15 +67,21 @@
 
           <div class="form-group">
             <label for="authors">Authors</label>
-            <input type="text" class="form-control" id="authors" name="authors" #authors="ngModel"
-                   [(ngModel)]="currentBook.volumeInfo.authors">
+            <input type="text" class="form-control" id="authors" name="authors" minlength="3" #authors="ngModel"
+                  required [(ngModel)]="currentBook.volumeInfo.authors">
+            <div [hidden]="authors.valid || authors.untouched"
+                 class="alert alert-danger">
+              Must Add authors
+            </div>
           </div>
+
+
 
           <div class="form-group">
             <label for="date">Publish Date</label>
             <input type="date" class="form-control" id="date" name="date" required
+                   (change)="validateDate(currentBook.volumeInfo.publishedDate)"
                    (keydown)="validateDate(currentBook.volumeInfo.publishedDate)"
-                   (keypress)="validateDate(currentBook.volumeInfo.publishedDate)"
                    #date="ngModel" [(ngModel)]="currentBook.volumeInfo.publishedDate">
             <div *ngIf="!isDateValid" class="alert alert-danger">This date is invalid</div>
           </div>
@@ -85,7 +92,7 @@
       </div>
     </div>
     <div class="modal-footer">
-      <button type="submit" class="btn btn-primary save-button" [disabled]="!isDateValid" (click)="updateBookItem()">
+      <button type="submit" class="btn btn-primary save-button" [disabled]="editBook.invalid || !isDateValid" (click)="updateBookItem()">
         Save
       </button>
       <button type="button" class="btn btn-danger pull-left delete-button" (click)="modalRef.hide();openModal(delete)">
@@ -116,9 +123,10 @@
         <form #addBook="ngForm">
 
           <div class="form-group">
-            <label for="newTitle">Title</label>
+            <label for="newTitle">Title</label> <span *ngIf="newTitle.invalid" class="title">*</span>
             <input type="text" class="form-control" id="newTitle" name="newTitle" minlength="4" required #newTitle="ngModel"
-                   [(ngModel)]="newBook.volumeInfo.title" (keydown)="validateTitle(newBook.volumeInfo.title,newBook.id)">
+                   [(ngModel)]="newBook.volumeInfo.title" (keydown)="validateTitle(newBook.volumeInfo.title,newBook.id)"
+                   (change)="validateTitle(newBook.volumeInfo.title,newBook.id)">
             <div *ngIf="isTitleDuplicate" class="alert alert-danger">This title already exists, try another name</div>
             <div [hidden]="newTitle.valid || newTitle.untouched"
                  class="alert alert-danger">
@@ -127,7 +135,7 @@
           </div>
 
           <div class="form-group">
-            <label for="newAuthors">Authors</label>
+            <label for="newAuthors">Authors</label> <span *ngIf="newAuthors.invalid" class="required">*</span>
             <input type="text" class="form-control" id="newAuthors" name="newAuthors" #newAuthors="ngModel" required
                    minlength="4" [(ngModel)]="newBook.volumeInfo.authors">
             <div [hidden]="newAuthors.valid || newAuthors.untouched"
@@ -137,18 +145,24 @@
           </div>
 
           <div class="form-group">
-            <label for="newDate">Publish Date</label>
+            <label for="newDate">Publish Date</label> <span *ngIf="!isDateValid" class="required">*</span>
             <input type="date" class="form-control" id="newDate" name="newDate" required
                    (keydown)="validateDate(newBook.volumeInfo.publishedDate,newBook.id)"
+                   (change)="validateDate(newBook.volumeInfo.publishedDate,newBook.id)"
                    #newDate="ngModel" [(ngModel)]="newBook.volumeInfo.publishedDate">
             <div *ngIf="!isDateValid" class="alert alert-danger">This date is invalid</div>
           </div>
 
           <div class="form-group">
-            <label for="link">Image link</label>
-            <input class="form-control" type="text" pattern="https?://.+ || http?://.+" id="link" name="link"
+            <label for="link">Image link</label> <span *ngIf="link.invalid" class="required">*</span>
+            <input class="form-control" id="link" #link="ngModel" type="text" minlength="15" id="link" name="link" required
                    [(ngModel)]="newBook.volumeInfo.imageLinks.thumbnail">
+            <div [hidden]="link.valid || link.untouched"
+                 class="alert alert-danger">
+              Link to a book must be added
+            </div>
           </div>
+
 
         </form>
       </div>

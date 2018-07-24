@@ -5,12 +5,12 @@
   <div class="text-side">
     <div class="upper-text">
       <h4 class="spinner-title">{{book.volumeInfo.title | booktitle }}</h4>
-      <p class="spinner-authors"> by {{book.volumeInfo.authors}}, {{book.volumeInfo.publishedDate | date:'MM/dd/yyyy'}}</p>
+      <p class="spinner-authors"> by {{book.volumeInfo.authors}}, {{book.volumeInfo.publishedDate |
+        date:'MM/dd/yyyy'}}</p>
       <p class="spinner-description">{{book.volumeInfo.description| truncate }}</p>
     </div>
     <div class="lower-btn">
       <button (click)="openModal(template)" class="btn edit-btn">Edit</button>
-      <button (click)="openModal(template1)" class="btn edit-btn"><i class="fas fa-trash-alt"></i></button>
     </div>
   </div>
 </div>
@@ -29,34 +29,42 @@
         <form>
           <div class="form-group">
             <label for="title">Title</label>
-            <input type="text" class="form-control" id="title" name="title" required [(ngModel)]="newTitle" >
+            <input type="text" class="form-control" id="title" name="title" required minlength="3"
+                   #title="ngModel" [(ngModel)]="newTitle">
+          </div>
+          <div [hidden]="title.valid"
+               class="alert alert-danger">
+            Title must be at least 3 characters
           </div>
 
           <div class="form-group">
             <label for="authors">Authors</label>
-            <input type="text" class="form-control" id="authors" name="authors" [(ngModel)]="newAuthors">
+            <input type="text" class="form-control" id="authors" name="authors" minlength="3" required
+                   #authors="ngModel" [(ngModel)]="newAuthors">
+            <div [hidden]="authors.valid" class="alert alert-danger">
+              Must add authors
+            </div>
           </div>
+
 
           <div class="form-group">
             <label for="date">Publish Date</label>
-            <input type="date" class="form-control" id="date" name="published-date" [(ngModel)]="newDate">
+            <input type="date" class="form-control" id="date" name="date" required (keydown)="validateDate(newDate)"
+                   (change)="validateDate(newDate)" #date="ngModel" [(ngModel)]="newDate">
+            <div *ngIf="!isDateValid" class="alert alert-danger">This date is invalid</div>
           </div>
         </form>
-
       </div>
     </div>
+
+
     <div class="modal-footer">
-      <button type="button" class="btn btn-primary save-button" (click)="saveBookItem();modalRef.hide();">Save</button>
-      <button type="button" class="btn btn-danger pull-left delete-button" (click)="saveBookItem();modalRef.hide()">Cancel</button>
+      <button type="button" class="btn btn-primary save-button" [disabled]="template.invalid || !isDateValid"
+              (click)="saveBookItem();modalRef.hide();">Save
+      </button>
+      <button type="button" class="btn btn-danger pull-left delete-button" (click)="saveBookItem();modalRef.hide()">
+        Cancel
+      </button>
     </div>
   </div>
 </ng-template>
-
-<ng-template #template1>
-  <div class="modal-body text-center">
-    <p>Do you want to delete "{{book.volumeInfo.title}}?</p>
-    <button type="button" class="btn btn-default" (click)="deleteBook();" >Yes</button>
-    <button type="button" class="btn btn-primary" (click)="modalRef.hide();">No</button>
-  </div>
-</ng-template>
-

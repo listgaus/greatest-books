@@ -12,7 +12,6 @@ import {DragScrollModule} from 'ngx-drag-scroll';
 import {BookSpinnerItemComponent} from './components/book-spinner-item/book-spinner-item.component';
 import {BookSpinnerComponent} from './components/book-spinner/book-spinner.component';
 import {TitlePipe} from './pipes/capitalize-title/capitalize-title.pipe';
-import {PopupModalComponent} from './components/popup-modal/popup-modal.component';
 import {TooltipModule} from 'ngx-bootstrap/tooltip';
 import {ModalModule} from 'ngx-bootstrap';
 import {SearchBarComponent} from './search-bar/search-bar.component';
@@ -30,7 +29,6 @@ import {TruncatePipe} from './pipes/truncate/truncate.pipe';
     BestBookListComponent,
     BookSpinnerComponent,
     BookSpinnerItemComponent,
-    PopupModalComponent,
     SearchBarComponent,
     TruncatePipe
   ],
