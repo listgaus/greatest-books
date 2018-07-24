@@ -54,7 +54,7 @@
           <div class="form-group">
             <label for="title">Title</label>
             <input type="text" class="form-control" id="title" name="title"
-                   [(ngModel)]="currentBook.volumeInfo.title" minlength="4" required
+                   [(ngModel)]="currentBook.volumeInfo.title" minlength="3" required
                    #title="ngModel" minlength="4"
                    (keydown)="validateTitle(currentBook.volumeInfo.title,currentBook.id)"
                    (change)="validateTitle(currentBook.volumeInfo.title,currentBook.id)">
