@@ -1,6 +1,8 @@
 <div class="book-spinner-item">
   <div class="image-side">
-    <img [src]="book.volumeInfo.imageLinks.thumbnail">
+    <img *ngIf="book.volumeInfo.imageLinks.thumbnail" [src]="book.volumeInfo.imageLinks.thumbnail">
+    <img *ngIf="!book.volumeInfo.imageLinks.thumbnail || book.volumeInfo.imageLinks.thumbnail == undefined"
+         src="../../../assets/images/nocover.jpg">
   </div>
   <div class="text-side">
     <div class="upper-text">
@@ -32,7 +34,7 @@
             <input type="text" class="form-control" id="title" name="title" required minlength="3"
                    #title="ngModel" [(ngModel)]="newTitle">
           </div>
-          <div [hidden]="title.valid"
+          <div [hidden]="title.valid || title.untouched"
                class="alert alert-danger">
             Title must be at least 3 characters
           </div>
@@ -41,7 +43,7 @@
             <label for="authors">Authors</label>
             <input type="text" class="form-control" id="authors" name="authors" minlength="3" required
                    #authors="ngModel" [(ngModel)]="newAuthors">
-            <div [hidden]="authors.valid" class="alert alert-danger">
+            <div [hidden]="authors.valid || authors.untouched " class="alert alert-danger">
               Must add authors
             </div>
           </div>

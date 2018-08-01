@@ -20,9 +20,12 @@ export class BookSpinnerItemComponent implements OnInit {
   constructor(private modalService: BsModalService) {}
 
   ngOnInit() {
-    this.newTitle = JSON.parse(JSON.stringify(this.book.volumeInfo.title));
-    this.newDate = JSON.parse(JSON.stringify(this.book.volumeInfo.publishedDate));
-    this.newAuthors = JSON.parse(JSON.stringify(this.book.volumeInfo.authors[0]));
+    // this.newTitle = JSON.parse(JSON.stringify(this.book.volumeInfo.title));
+    // this.newDate = JSON.parse(JSON.stringify(this.book.volumeInfo.publishedDate));
+    // this.newAuthors = JSON.parse(JSON.stringify(this.book.volumeInfo.authors[0]));
+    this.newTitle = Object.assign('',this.book.volumeInfo.title);
+    this.newDate = Object.assign('',this.book.volumeInfo.publishedDate);
+    this.newAuthors = Object.assign('',this.book.volumeInfo.authors[0]);
   }
 
   openModal(template: TemplateRef<any>) {
@@ -33,7 +36,7 @@ export class BookSpinnerItemComponent implements OnInit {
     this.book.volumeInfo.title = this.newTitle ;
     this.book.volumeInfo.publishedDate = this.newDate;
     this.book.volumeInfo.authors = this.newAuthors;
-  }
+    }
 
   validateDate(BookDate) {
     let thisDate = new Date();

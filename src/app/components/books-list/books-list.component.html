@@ -32,7 +32,7 @@
 
   <hr>
 
-  <img *ngIf="isLoading" class="loading pull-right" src="/assets/images/ajax-loader.gif" alt="Loading data...">
+  <img *ngIf="isLoading" class="loading" src="/assets/images/ajax-loader.gif" alt="Loading data...">
 
   <div class="single-book col-sm-5" *ngFor="let book of books ">
     <book *ngIf="!isLoading" [book]="book" (edit)="openModal(editbook);updateCurrentBook($event)"></book>
@@ -54,7 +54,7 @@
           <div class="form-group">
             <label for="title">Title</label>
             <input type="text" class="form-control" id="title" name="title"
-                   [(ngModel)]="currentBook.volumeInfo.title" minlength="4" required
+                   [(ngModel)]="currentBook.volumeInfo.title" minlength="3" required
                    #title="ngModel" minlength="4"
                    (keydown)="validateTitle(currentBook.volumeInfo.title,currentBook.id)"
                    (change)="validateTitle(currentBook.volumeInfo.title,currentBook.id)">

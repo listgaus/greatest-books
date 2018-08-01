@@ -17,7 +17,7 @@ export class BookSpinnerComponent implements OnInit {
   }
 
   loadData() {
-    this.booksService.getBooksWithMax('Angular', 6).subscribe(
+    this.booksService.getBooksWithMax('Angular', 5).subscribe(
       (data: any) => {
         this.books = data.items;
       },

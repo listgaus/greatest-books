@@ -1,226 +1,294 @@
 body {
   background-color: #F2F5F7;
-  color: gray; }
+  color: gray;
+}
 
 .background {
   background: url("../images/header.jpg") no-repeat center center fixed;
-  background-size: cover; }
+  background-size: cover;
+}
 
 .nav-bar {
   text-decoration: underline overline wavy blue;
   font-family: David;
   width: 90%;
-  margin-bottom: 25px; }
-  .nav-bar hr {
-    margin: 10px;
-    color: darkgray; }
-  .nav-bar .right-btn {
-    margin-right: 20px; }
-  .nav-bar .search-bar-container {
-    margin-top: 4px;
-    margin-right: 10px; }
-  .nav-bar .search-input {
-    margin-left: 5px;
-    margin-top: 2px; }
-  .nav-bar ul {
-    padding-top: 10px;
-    float: right; }
-    .nav-bar ul li {
-      margin-left: 10px; }
+  margin-bottom: 25px;
+}
+.nav-bar hr {
+  margin: 10px;
+  color: darkgray;
+}
+.nav-bar .right-btn {
+  margin-right: 20px;
+}
+.nav-bar .search-bar-container {
+  margin-top: 4px;
+  margin-right: 10px;
+}
+.nav-bar .search-input {
+  margin-left: 5px;
+  margin-top: 2px;
+}
+.nav-bar ul {
+  padding-top: 10px;
+  float: right;
+}
+.nav-bar ul li {
+  margin-left: 10px;
+}
 
 .books-list {
   width: 72%;
   float: left;
-  margin-left: 40px; }
-  .books-list .single-book {
-    margin-top: 60px; }
-  .books-list .loading {
-    position: relative;
-    top: 150px;
-    right: 45%; }
+  margin-left: 40px;
+}
+.books-list .single-book {
+  margin-top: 60px;
+}
+.books-list .loading {
+  left: 45%;
+  position: relative;
+  top: 10%;
+  right: 45%;
+}
 
 book-list {
-  margin-left: 30px; }
+  margin-left: 30px;
+}
 
 .best-book-list-container {
   width: 25%;
   float: left;
-  margin-right: 5px; }
-  .best-book-list-container .best-books-header {
-    text-align: center;
-    margin-top: 25px; }
-  .best-book-list-container .best-book-list {
-    margin-left: 20px; }
-    .best-book-list-container .best-book-list .best-book-continer {
-      height: 80px; }
-      .best-book-list-container .best-book-list .best-book-continer .book-image-container {
-        width: 27%; }
-        .best-book-list-container .best-book-list .best-book-continer .book-image-container img {
-          width: 45px;
-          height: 50px;
-          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-          float: right;
-          margin-right: 15px; }
-      .best-book-list-container .best-book-list .best-book-continer .book-text-container {
-        line-height: 11px;
-        padding-top: 5px; }
-        .best-book-list-container .best-book-list .best-book-continer .book-text-container .book-title {
-          font-size: 11px;
-          color: gray; }
-        .best-book-list-container .best-book-list .best-book-continer .book-text-container .book-authors {
-          position: relative;
-          bottom: 10px;
-          font-size: 10px;
-          font-weight: 550;
-          color: lightgray; }
-      .best-book-list-container .best-book-list .best-book-continer .book-image-container,
-      .best-book-list-container .best-book-list .best-book-continer book-text-container {
-        float: left; }
+  margin-right: 5px;
+}
+.best-book-list-container .best-books-header {
+  text-align: center;
+  margin-top: 25px;
+}
+.best-book-list-container .best-book-list {
+  margin-left: 20px;
+}
+.best-book-list-container .best-book-list .best-book-continer {
+  height: 80px;
+}
+.best-book-list-container .best-book-list .best-book-continer .book-image-container {
+  width: 27%;
+}
+.best-book-list-container .best-book-list .best-book-continer .book-image-container img {
+  width: 45px;
+  height: 50px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  float: right;
+  margin-right: 15px;
+}
+.best-book-list-container .best-book-list .best-book-continer .book-text-container {
+  line-height: 11px;
+  padding-top: 5px;
+}
+.best-book-list-container .best-book-list .best-book-continer .book-text-container .book-title {
+  font-size: 11px;
+  color: gray;
+}
+.best-book-list-container .best-book-list .best-book-continer .book-text-container .book-authors {
+  position: relative;
+  bottom: 10px;
+  font-size: 10px;
+  font-weight: 550;
+  color: lightgray;
+}
+.best-book-list-container .best-book-list .best-book-continer .book-image-container,
+.best-book-list-container .best-book-list .best-book-continer book-text-container {
+  float: left;
+}
 
 .single-book-container {
   height: 200px;
   width: 400px;
   background-color: white;
-  outline: 1px solid lightgray; }
-  .single-book-container .book-body {
-    padding-top: 5px; }
-    .single-book-container .book-body .book-image {
-      width: 30%;
-      float: left; }
-      .single-book-container .book-body .book-image .card-img-top {
-        height: 200px;
-        top: -40px;
-        position: relative;
-        margin-left: 15px;
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }
-    .single-book-container .book-body .book-info {
-      width: 54%;
-      float: left;
-      height: 200px;
-      margin-left: 10%; }
-      .single-book-container .book-body .book-info .title {
-        font-weight: bold;
-        color: gray;
-        line-height: 17px;
-        margin-top: 5px; }
-      .single-book-container .book-body .book-info .authors {
-        font-size: smaller;
-        font-weight: 550;
-        color: lightgray;
-        line-height: 17px;
-        margin-top: -15px; }
-      .single-book-container .book-body .book-info .published-date {
-        font-size: smaller;
-        color: lightgray;
-        line-height: 17px; }
-      .single-book-container .book-body .book-info .description {
-        font-size: smaller;
-        word-break: break-all;
-        color: lightgray;
-        line-height: 16px; }
-    .single-book-container .book-body .edit-button {
-      width: 2%;
-      float: left; }
+  outline: 1px solid lightgray;
+}
+.single-book-container .book-body {
+  padding-top: 5px;
+}
+.single-book-container .book-body .book-image {
+  width: 30%;
+  float: left;
+}
+.single-book-container .book-body .book-image .card-img-top {
+  height: 200px;
+  top: -40px;
+  position: relative;
+  margin-left: 15px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.single-book-container .book-body .book-info {
+  width: 54%;
+  float: left;
+  height: 200px;
+  margin-left: 10%;
+}
+.single-book-container .book-body .book-info .title {
+  font-weight: bold;
+  color: gray;
+  line-height: 17px;
+  margin-top: 5px;
+}
+.single-book-container .book-body .book-info .authors {
+  font-size: smaller;
+  font-weight: 550;
+  color: lightgray;
+  line-height: 17px;
+  margin-top: -15px;
+}
+.single-book-container .book-body .book-info .published-date {
+  font-size: smaller;
+  color: lightgray;
+  line-height: 17px;
+}
+.single-book-container .book-body .book-info .description {
+  font-size: smaller;
+  word-break: break-all;
+  color: lightgray;
+  line-height: 16px;
+}
+.single-book-container .book-body .edit-button {
+  width: 2%;
+  float: left;
+}
 
 .book-spinner-container {
-  width: 100%; }
-  .book-spinner-container .book-spinner {
-    width: 100%; }
-    .book-spinner-container .book-spinner book-spinner-item {
-      background-color: red;
-      border: 1px 0 1px 0 solid;
-      border-right: 1px solid;
-      border-color: white;
-      width: 35%;
-      height: 280px;
-      margin-bottom: 150px; }
-      .book-spinner-container .book-spinner book-spinner-item .text-side {
-        width: 50%;
-        height: 240px;
-        float: right;
-        margin-top: 43px;
-        color: white;
-        white-space: normal; }
-        .book-spinner-container .book-spinner book-spinner-item .text-side .upper-text {
-          height: 175px; }
-        .book-spinner-container .book-spinner book-spinner-item .text-side .lower-btn {
-          margin-top: 30px;
-          margin-right: 5px;
-          text-align: right; }
-        .book-spinner-container .book-spinner book-spinner-item .text-side .spinner-title {
-          line-height: 18px;
-          font-weight: bold;
-          font-size: 20px;
-          color: gray; }
-        .book-spinner-container .book-spinner book-spinner-item .text-side .spinner-authors {
-          font-size: 12px;
-          line-height: 11px;
-          color: dimgray; }
-        .book-spinner-container .book-spinner book-spinner-item .text-side .spinner-description {
-          font-size: smaller;
-          color: #fffff2;
-          padding-right: 5px; }
-        .book-spinner-container .book-spinner book-spinner-item .text-side .edit-btn {
-          text-decoration: none;
-          margin-left: 5px;
-          font-size: 12px;
-          font-weight: bold;
-          padding: 0 0px;
-          line-height: 22px;
-          display: inline-block;
-          text-align: center;
-          background-color: white;
-          -webkit-border-radius: 16px;
-          -moz-border-radius: 16px;
-          border-radius: 16px;
-          width: 50px; }
-      .book-spinner-container .book-spinner book-spinner-item .image-side {
-        float: left;
-        width: 30%;
-        height: 240px; }
-        .book-spinner-container .book-spinner book-spinner-item .image-side img {
-          position: relative;
-          height: 330px;
-          position: relative;
-          top: 25px;
-          margin-left: 25px;
-          width: 190px;
-          box-shadow: 0 12px 8px 0 rgba(0, 0, 0, 0.2), 0 14px 20px 0 rgba(0, 0, 0, 0.19); }
-      .book-spinner-container .book-spinner book-spinner-item:nth-child(1) {
-        background: linear-gradient(to right, #EC9092, #EC9092); }
-        .book-spinner-container .book-spinner book-spinner-item:nth-child(1) .edit-btn {
-          color: #EC9092; }
-      .book-spinner-container .book-spinner book-spinner-item:nth-child(2) {
-        background: linear-gradient(to right, #D698BB, #D698BB); }
-        .book-spinner-container .book-spinner book-spinner-item:nth-child(2) .edit-btn {
-          color: #D698BB; }
-      .book-spinner-container .book-spinner book-spinner-item:nth-child(3) {
-        background: linear-gradient(to right, #8BCDDB, #9FDCE9); }
-        .book-spinner-container .book-spinner book-spinner-item:nth-child(3) .edit-btn {
-          color: #8BCDDB; }
-      .book-spinner-container .book-spinner book-spinner-item:nth-child(4) {
-        background: linear-gradient(to right, #EC9092, #EC9092); }
-        .book-spinner-container .book-spinner book-spinner-item:nth-child(4) .edit-btn {
-          color: #EC9092; }
-      .book-spinner-container .book-spinner book-spinner-item:nth-child(5) {
-        background: linear-gradient(to right, #D698BB, #D698BB); }
-        .book-spinner-container .book-spinner book-spinner-item:nth-child(5) .edit-btn {
-          color: #D698BB; }
-      .book-spinner-container .book-spinner book-spinner-item:nth-child(6) {
-        background: linear-gradient(to right, #8BCDDB, #9FDCE9); }
-        .book-spinner-container .book-spinner book-spinner-item:nth-child(6) .edit-btn {
-          color: #8BCDDB; }
+  width: 100%;
+}
+.book-spinner-container .book-spinner {
+  width: 100%;
+}
+.book-spinner-container .book-spinner book-spinner-item {
+  background-color: red;
+  border: 1px 0 1px 0 solid;
+  border-right: 1px solid;
+  border-color: white;
+  width: 35%;
+  height: 280px;
+  margin-bottom: 150px;
+}
+.book-spinner-container .book-spinner book-spinner-item .text-side {
+  width: 50%;
+  height: 240px;
+  float: right;
+  margin-top: 43px;
+  color: white;
+  white-space: normal;
+}
+.book-spinner-container .book-spinner book-spinner-item .text-side .upper-text {
+  height: 175px;
+}
+.book-spinner-container .book-spinner book-spinner-item .text-side .lower-btn {
+  margin-top: 30px;
+  margin-right: 5px;
+  text-align: right;
+}
+.book-spinner-container .book-spinner book-spinner-item .text-side .spinner-title {
+  line-height: 18px;
+  font-weight: bold;
+  font-size: 20px;
+  color: gray;
+}
+.book-spinner-container .book-spinner book-spinner-item .text-side .spinner-authors {
+  font-size: 12px;
+  line-height: 11px;
+  color: dimgray;
+}
+.book-spinner-container .book-spinner book-spinner-item .text-side .spinner-description {
+  font-size: smaller;
+  color: #fffff2;
+  padding-right: 5px;
+}
+.book-spinner-container .book-spinner book-spinner-item .text-side .edit-btn {
+  text-decoration: none;
+  margin-left: 5px;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 0 0px;
+  line-height: 22px;
+  display: inline-block;
+  text-align: center;
+  background-color: white;
+  -webkit-border-radius: 16px;
+  -moz-border-radius: 16px;
+  border-radius: 16px;
+  width: 50px;
+}
+.book-spinner-container .book-spinner book-spinner-item .image-side {
+  float: left;
+  width: 30%;
+  height: 240px;
+}
+.book-spinner-container .book-spinner book-spinner-item .image-side img {
+  position: relative;
+  height: 330px;
+  position: relative;
+  top: 25px;
+  margin-left: 25px;
+  width: 190px;
+  box-shadow: 0 12px 8px 0 rgba(0, 0, 0, 0.2), 0 14px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.book-spinner-container .book-spinner book-spinner-item:nth-child(1) {
+  background: linear-gradient(to right, #EC9092, #EC9092);
+}
+.book-spinner-container .book-spinner book-spinner-item:nth-child(1) .edit-btn {
+  color: #EC9092;
+}
+.book-spinner-container .book-spinner book-spinner-item:nth-child(2) {
+  background: linear-gradient(to right, #D698BB, #D698BB);
+}
+.book-spinner-container .book-spinner book-spinner-item:nth-child(2) .edit-btn {
+  color: #D698BB;
+}
+.book-spinner-container .book-spinner book-spinner-item:nth-child(3) {
+  background: linear-gradient(to right, #8BCDDB, #9FDCE9);
+}
+.book-spinner-container .book-spinner book-spinner-item:nth-child(3) .edit-btn {
+  color: #8BCDDB;
+}
+.book-spinner-container .book-spinner book-spinner-item:nth-child(4) {
+  background: linear-gradient(to right, #EC9092, #EC9092);
+}
+.book-spinner-container .book-spinner book-spinner-item:nth-child(4) .edit-btn {
+  color: #EC9092;
+}
+.book-spinner-container .book-spinner book-spinner-item:nth-child(5) {
+  background: linear-gradient(to right, #D698BB, #D698BB);
+}
+.book-spinner-container .book-spinner book-spinner-item:nth-child(5) .edit-btn {
+  color: #D698BB;
+}
+.book-spinner-container .book-spinner book-spinner-item:nth-child(6) {
+  background: linear-gradient(to right, #8BCDDB, #9FDCE9);
+}
+.book-spinner-container .book-spinner book-spinner-item:nth-child(6) .edit-btn {
+  color: #8BCDDB;
+}
 
 .edit-popup .save-button {
-  margin-right: 10px; }
+  margin-right: 10px;
+}
 .edit-popup .close {
-  color: red; }
+  color: red;
+}
 .edit-popup .edit-label {
-  height: 60px; }
-  .edit-popup .edit-label .edit-input {
-    position: relative;
-    float: right; }
-  .edit-popup .edit-label .save-button {
-    background-color: blue; }
+  height: 60px;
+}
+.edit-popup .edit-label .edit-input {
+  position: relative;
+  float: right;
+}
+.edit-popup .edit-label .save-button {
+  background-color: blue;
+}
+
+.required {
+  color: red;
+  margin-left: 2px;
+}
 
 /*# sourceMappingURL=styles.css.map */
